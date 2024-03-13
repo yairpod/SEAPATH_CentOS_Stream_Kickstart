@@ -64,7 +64,7 @@ sshkey --username=root "ssh-rsa XXX"
 # CentOS addons
 repo --name=HighAvailability --mirrorlist=https://mirrors.centos.org/metalink?repo=centos-highavailability-$stream&arch=$basearch&protocol=https,http --install
 
-repo --name=rt --mirrorlist=https://mirrors.centos.org/metalink?repo=centos-rt-$stream&arch=$basearch&protocol=https,http --install
+repo --name=nfv --mirrorlist=https://mirrors.centos.org/metalink?repo=centos-nfv-$stream&arch=$basearch&protocol=https,http --install
 
 # Docker
 repo --name=Docker --baseurl=https://download.docker.com/linux/centos/9/x86_64/stable/ --install
@@ -131,6 +131,8 @@ pacemaker
 openvswitch
 
 kernel-rt
+grubby
+kernel-rt-kvm
 qemu-kvm
 
 ceph
@@ -234,5 +236,6 @@ make
 make install
 mkdir -p  /var/log/crmsh/
 
+grubby --set-default-index=0
 
 %end
