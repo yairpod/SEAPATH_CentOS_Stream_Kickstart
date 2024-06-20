@@ -64,7 +64,9 @@ sshkey --username=root "ssh-rsa XXX"
 # CentOS addons
 repo --name=HighAvailability --mirrorlist=https://mirrors.centos.org/metalink?repo=centos-highavailability-$stream&arch=$basearch&protocol=https,http --install
 
-repo --name=nfv --mirrorlist=https://mirrors.centos.org/metalink?repo=centos-nfv-$stream&arch=$basearch&protocol=https,http --install
+repo --name=Realtime --mirrorlist=https://mirrors.centos.org/metalink?repo=centos-rt-$stream&arch=$basearch&protocol=https,http --install
+
+repo --name=CentOS-NFV --mirrorlist=https://mirrors.centos.org/metalink?repo=centos-nfv-$stream&arch=$basearch&protocol=https,http --install
 
 # Docker
 repo --name=Docker --baseurl=https://download.docker.com/linux/centos/9/x86_64/stable/ --install
@@ -74,12 +76,12 @@ repo --name=fedora_epel --baseurl=https://dl.fedoraproject.org/pub/epel/9/Everyt
 
 
 # OpenVSwitch
-repo --name=rdo-release --mirrorlist=https://mirrors.centos.org/metalink?repo=centos-cloud-sig-openstack-yoga-9-stream&arch=x86_64 --install --cost=2
+repo --name=rdo-release --mirrorlist=https://mirrors.centos.org/metalink?repo=centos-cloud-sig-openstack-yoga-9-stream&arch=x86_64 --install --cost=3
 
-repo --name=centos-nfv-sig-openvswitch --mirrorlist=https://mirrors.centos.org/metalink?repo=centos-nfv-sig-openvswitch-2-9-stream&arch=x86_64 --install --cost=2
+repo --name=centos-nfv-sig-openvswitch --mirrorlist=https://mirrors.centos.org/metalink?repo=centos-nfv-sig-openvswitch-2-9-stream&arch=x86_64 --install --cost=4
 
 # Ceph
-repo --name=Ceph_x86 --baseurl=https://mirror.stream.centos.org/SIGs/9-stream/storage/x86_64/ceph-pacific/ --install --cost=3
+repo --name=Ceph_x86 --baseurl=https://mirror.stream.centos.org/SIGs/9-stream/storage/x86_64/ceph-pacific/ --install --cost=5
 
 
 %packages
@@ -151,6 +153,7 @@ python3-cephfs
 tuna
 
 tuned
+tuned-profiles-nfv
 tuned-profiles-realtime
 
 virt-install
@@ -162,10 +165,14 @@ systemd-networkd
 systemd-resolved
 systemd-timesyncd
 
-@virtualization-hypervisor
-
 #for crmsh build
 @development
+
+#libvirt-clients
+#docker-compose
+#lm-sensors
+
+@virtualization-hypervisor
 
 %end
 
