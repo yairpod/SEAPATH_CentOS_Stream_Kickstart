@@ -221,8 +221,6 @@ echo "EDITOR=vim" >> /etc/environment
 echo "SYSTEMD_EDITOR=vim" >> /etc/environment
 echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 rpm -import /tmp/Docker_gpg
-wget https://download.ceph.com/keys/release.asc
-rpm --import release.asc
 
 echo "Defaults:ansible !requiretty" >> /etc/sudoers
 echo "ansible    ALL=NOPASSWD:EXEC:SETENV: /bin/sh" >> /etc/sudoers
