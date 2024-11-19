@@ -27,7 +27,7 @@ part pv.0 --fstype=lvmpv --ondisk=/dev/sda  --size=20992
 part /boot/efi --fstype=efi --ondisk=/dev/sda --size=512 --asprimary
 volgroup vg1 --pesize=4096 pv.0
 logvol / --vgname=vg1 --name=vg1-root --fstype=ext4 --size=15360
-logvol /var --vgname=vg1 --name=vg1-varlog --fstype=ext4 --size=5120
+logvol /var/log --vgname=vg1 --name=vg1-varlog --fstype=ext4 --size=5120
 logvol swap --vgname=vg1 --name=vg1-swap --fstype=swap --size=500
 
 
