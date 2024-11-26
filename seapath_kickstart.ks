@@ -226,6 +226,7 @@ echo "Defaults:ansible !requiretty" >> /etc/sudoers
 echo "ansible    ALL=NOPASSWD:EXEC:SETENV: /bin/sh" >> /etc/sudoers
 echo "ansible    ALL=NOPASSWD: /usr/bin/rsync" >> /etc/sudoers
 echo "ansible    ALL=NOPASSWD: /usr/local/bin/crm" >> /etc/sudoers
+echo "ansible    ALL=NOPASSWD: /usr/bin/ceph" >> /etc/sudoers
 
 echo "virtu   ALL=NOPASSWD: ALL" >> /etc/sudoers
 
