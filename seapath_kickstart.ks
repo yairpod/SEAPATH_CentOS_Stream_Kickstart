@@ -240,6 +240,7 @@ cd /tmp/crmsh
 ./configure
 make
 make install
+ln -s /usr/local/bin/crm /usr/bin/crm
 mkdir -p  /var/log/crmsh/
 
 grubby --set-default-index=0
