@@ -134,14 +134,12 @@ openvswitch
 
 kernel-rt
 grubby
-kernel-rt-kvm
 qemu-kvm
 
 ceph
 ceph-base
 ceph-common
 ceph-mgr
-ceph-mgr-diskprediction-local
 ceph-mon
 ceph-osd
 libcephfs2
