@@ -232,9 +232,8 @@ cat <<EOF > /etc/profile.d/custom-path.sh
 PATH=$PATH:/usr/local/bin/
 EOF
 
-git clone https://github.com/ClusterLabs/crmsh.git /tmp/crmsh
+git clone  --depth 1 --branch 4.6.0 https://github.com/ClusterLabs/crmsh.git /tmp/crmsh
 cd /tmp/crmsh
-git checkout tags/4.6.0
 ./autogen.sh
 ./configure
 make
