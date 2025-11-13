@@ -4,8 +4,7 @@ CentOS Stream uses the Anaconda Installer which allows for automation and unatte
 See more at: https://pykickstart.readthedocs.io/en/latest/
 
 ## Customization
-Since the kickstart file defines installation parameters and each installation setup is different customization is recommended, Moreover since it includes local passwords and ssh keys some items are mendatory.
-
+Since the kickstart file defines installation parameters and each installation setup is different customization is recommended, Moreover since it includes local passwords and ssh keys some items are mandatory.
 
 ### Mandatory
 **change the authorized_keys files (user and root) with your own**
@@ -15,11 +14,14 @@ sshkey --username=virtu "ssh-rsa XXX"
 sshkey --username=ansible "ssh-rsa XXX"
 sshkey --username=root "ssh-rsa XXX"
 ```
-Replacing the quoted section with the ssh key of your choose.
+Replacing the quoted section with the ssh key of your choice.
 
-Replace [rootpw](https://pykickstart.readthedocs.io/en/latest/kickstart-docs.html#rootpw) with encrypted root password.
+### Optional
 
-In the lines beginning with `user` change the value of `--password=` to [encrypted passwords](https://pykickstart.readthedocs.io/en/latest/kickstart-docs.html#user) of your choose.
+The default password for root and unprivileged users is "toto". To change it,
+replace [rootpw](https://pykickstart.readthedocs.io/en/latest/kickstart-docs.html#rootpw) with encrypted root password.
+
+In the lines beginning with `user` change the value of `--password=` to [encrypted passwords](https://pykickstart.readthedocs.io/en/latest/kickstart-docs.html#user) of your choice.
 
 **Depending on your network configuration**
 Replace network device, ip and gateway and the `network` line.
@@ -32,7 +34,7 @@ part pv.0 --fstype=lvmpv --ondisk=/dev/sda  --size=20992
 part /boot/efi --fstype=efi --ondisk=/dev/sda --size=512 --asprimary
 ```
 Remove the line starting with `ignoredisk` if you wish to install on more then one disk.
-### Optional
+
 Please consult the kickstart Documentation on https://pykickstart.readthedocs.io/en/latest/kickstart-docs.html
 
 ## Usage:
