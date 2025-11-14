@@ -112,3 +112,27 @@ Each VM has the following network cards:
 	enp3s0 (ring)
 
 Boot each VM from ISO (the kickstart installation should be performed).
+
+### Apply SEAPATH playbooks
+
+#### Create Container to run Ansible 2.10
+
+Clone the seapath ansible repository:
+
+	# git clone https://github.com/seapath/ansible.git
+
+Containerfile (in this git repository) contains instructions to create
+a CentOS 9 based container. To build the container:
+
+	# podman build --tag centos4seapath .
+
+Then run the container (note: should modify /path/to/seapath-ansible-git/ and /home/user/,
+the user which SSH keys were used to create the Seapath ISO files):
+
+	# podman run --privileged --rm --mount type=bind,source=/path/to/seapath-ansible-git/,target=/root/ansible/ --mount type=bind,source=/home/user/.ssh/,target=/root/.ssh/ -it centos4seapath
+
+Inside the container, cd to /root/ansible/, then run
+
+	# ./prepare.sh
+
+To pull dependencies necessary by the SEAPATH Ansible scripts.
