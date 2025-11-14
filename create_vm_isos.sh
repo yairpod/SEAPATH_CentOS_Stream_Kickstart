@@ -5,8 +5,8 @@
 
 if [[ $1 == "rebuild" ]]; then
 	cp seapath_kickstart.ks  ./kickstart_seapath_1.ks
-	sed 's/--ip=192.168.122.2/--ip=192.168.122.3/' seapath_kickstart.ks > kickstart_seapath_2.ks
-	sed 's/--ip=192.168.122.2/--ip=192.168.122.4/' seapath_kickstart.ks > kickstart_seapath_3.ks
+	sed 's/--ip=192.168.124.2/--ip=192.168.124.3/' seapath_kickstart.ks > kickstart_seapath_2.ks
+	sed 's/--ip=192.168.124.2/--ip=192.168.124.4/' seapath_kickstart.ks > kickstart_seapath_3.ks
 fi
 
 rm -f seapath-clone-ceph-1-clone-clone.qcow2 && qemu-img create -f qcow2 seapath-clone-ceph-1-clone-clone.qcow2 10737418240

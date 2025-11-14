@@ -33,7 +33,7 @@ logvol swap --vgname=vg1 --name=vg1-swap --fstype=swap --size=500
 
 # Network information
 # UPDATE: change device name and static IP to your correct settings (gateway and nameserver might also be needed)
-network --device=enp1s0 --bootproto=static --ip=192.168.122.2 --netmask=255.255.255.255 --gateway=192.168.122.1 --nameserver=192.168.122.1
+network --device=enp1s0 --bootproto=static --ip=192.168.124.2 --netmask=255.255.255.255 --gateway=192.168.124.1 --nameserver=192.168.124.1
 
 # Do not configure the X Window System
 skipx

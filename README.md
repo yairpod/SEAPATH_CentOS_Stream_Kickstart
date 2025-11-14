@@ -52,8 +52,8 @@ Or configure your server to use the kickstart file via network.
 ### Create ISOs
 create_vm_isos.sh script contains mkkiso commands. Edit it and replace the
 
-        sed 's/--ip=192.168.122.2/--ip=192.168.122.3/' seapath_kickstart.ks > kickstart_seapath_2.ks
-        sed 's/--ip=192.168.122.2/--ip=192.168.122.4/' seapath_kickstart.ks > kickstart_seapath_3.ks
+        sed 's/--ip=192.168.124.2/--ip=192.168.124.3/' seapath_kickstart.ks > kickstart_seapath_2.ks
+        sed 's/--ip=192.168.124.2/--ip=192.168.124.4/' seapath_kickstart.ks > kickstart_seapath_3.ks
 
 Lines with the IP address configured in seapath_kickstart.ks (this is setting IP address
 for the 3 different hosts).
@@ -63,6 +63,30 @@ Then run
 `create_vm_isos.sh rebuild`
 
 ### Creating VMs
+
+If using NAT, create a libvirt network for 192.168.124.1:
+
+	<network>
+		<name>seapath-default</name>
+		<forward mode='nat'/>
+		<bridge name='virbr1' stp='on' delay='0'/>
+		<mac address='52:54:00:73:d2:34'/>
+		<ip address='192.168.124.1' netmask='255.255.255.0'>
+		<dhcp> 
+			<range start='192.168.124.20' end='192.168.124.254'/> 
+		</dhcp> 
+  		</ip>
+	</network>
+
+Then create the network:
+
+	virsh net-define seapath-default.xml
+	virsh net-autostart seapathdefault
+	virsh net-start seapathdefault
+
+Note:
+	Had to change /etc/libvirt/network.conf to include firewall_backend = "nftables" 
+	on RHEL-9.
 
 For 3 VM cluster (where the 3 VMs are connected by bridges in a ring scheme),
 setup the bridges.
