@@ -16,13 +16,6 @@ sshkey --username=root "ssh-rsa XXX"
 ```
 Replacing the quoted section with the ssh key of your choice.
 
-### Optional
-
-The default password for root and unprivileged users is "toto". To change it,
-replace [rootpw](https://pykickstart.readthedocs.io/en/latest/kickstart-docs.html#rootpw) with encrypted root password.
-
-In the lines beginning with `user` change the value of `--password=` to [encrypted passwords](https://pykickstart.readthedocs.io/en/latest/kickstart-docs.html#user) of your choice.
-
 **Depending on your network configuration**
 Replace network device, ip and gateway and the `network` line.
 
@@ -34,6 +27,14 @@ part pv.0 --fstype=lvmpv --ondisk=/dev/sda  --size=20992
 part /boot/efi --fstype=efi --ondisk=/dev/sda --size=512 --asprimary
 ```
 Remove the line starting with `ignoredisk` if you wish to install on more then one disk.
+
+### Optional
+
+The default password for root and unprivileged users is "toto". To change it,
+replace [rootpw](https://pykickstart.readthedocs.io/en/latest/kickstart-docs.html#rootpw) with encrypted root password.
+
+In the lines beginning with `user` change the value of `--password=` to [encrypted passwords](https://pykickstart.readthedocs.io/en/latest/kickstart-docs.html#user) of your choice.
+
 
 Please consult the kickstart Documentation on https://pykickstart.readthedocs.io/en/latest/kickstart-docs.html
 
