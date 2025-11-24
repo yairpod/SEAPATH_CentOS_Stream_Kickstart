@@ -1,4 +1,11 @@
+
 ## Running SEAPATH hosts as VMs
+
+To install SEAPATH nodes as VMs, follow these instructions.
+One can either install SEAPATH on a physical nodes or virtual machines.
+Usage of VMs is not mandatory.
+Usage of VMs (instead of physical hosts) is useful for development and trials.
+
 ### Create ISOs
 create_vm_isos.sh script contains mkkiso commands. Edit it and replace the
 
