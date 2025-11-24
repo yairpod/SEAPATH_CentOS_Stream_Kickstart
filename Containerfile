@@ -9,8 +9,8 @@ RUN dnf -y update && \
 # version comes from the version that seapath tools require
 ENV ANSIBLE_VERSION 2.10.7
 
-RUN yum install -y gcc python3 git rsync python3-netaddr python3-six python3-pip
-RUN yum install -y vim iputils
+RUN dnf install -y gcc python3 git rsync python3-netaddr python3-six python3-pip
+RUN dnf install -y vim iputils
 RUN pip3 install --upgrade pip; \
     pip3 install "ansible==${ANSIBLE_VERSION}"
 
