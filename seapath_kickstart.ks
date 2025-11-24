@@ -26,8 +26,12 @@ reqpart --add-boot
 part pv.0 --fstype=lvmpv --ondisk=/dev/sda  --size=20992
 part /boot/efi --fstype=efi --ondisk=/dev/sda --size=512 --asprimary
 volgroup vg1 --pesize=4096 pv.0
-logvol / --vgname=vg1 --name=vg1-root --fstype=ext4 --size=15360
+logvol / --vgname=vg1 --name=vg1-root --fstype=ext4 --size=12288
+logvol /var --vgname=vg1 --name=vg1-var --fstype=ext4 --size=1024
 logvol /var/log --vgname=vg1 --name=vg1-varlog --fstype=ext4 --size=5120
+logvol /home --vgname=vg1 --name=vg1-home --fstype=ext4 --size=1024
+logvol /srv --vgname=vg1 --name=vg1-srv --fstype=ext4 --size=512
+logvol /var/tmp --vgname=vg1 --name=vg1-vartmp --fstype=ext4 --size=512
 logvol swap --vgname=vg1 --name=vg1-swap --fstype=swap --size=500
 
 
