@@ -3,6 +3,8 @@
 # and six disks, two per host 
 # It requires: lorax
 
+virsh destroy myvm
+
 if [[ $1 == "rebuild" ]]; then
 	cp seapath_kickstart.ks  ./kickstart_seapath_1.ks
 	sed 's/--ip=192.168.124.2/--ip=192.168.124.3/' seapath_kickstart.ks > kickstart_seapath_2.ks
@@ -22,3 +24,5 @@ if [[ $1 == "rebuild" ]]; then
 	rm -f seapath_fedora_2.iso && time mkksiso --debug --ks kickstart_seapath_2.ks CentOS-Stream-9-latest-x86_64-dvd1.iso  seapath_fedora_2.iso
 	rm -f seapath_fedora_3.iso && time mkksiso --debug --ks kickstart_seapath_3.ks CentOS-Stream-9-latest-x86_64-dvd1.iso  seapath_fedora_3.iso
 fi
+
+virsh start myvm
