@@ -76,7 +76,7 @@ Create three of them and then run for each one:
 ### Create the VMs
 
 Use 1 ISO and the 2 disks for each VM.
-Use “vm_example.xml” as a template for the VM.
+Use “virtualized_node_example.xml” as a template for the VM.
 
 Modify the path to disks and the iso based on the VM.
 
@@ -84,7 +84,7 @@ For multi VM setups, connect one of the network card
 to the default bridge and the other two to each corresponding bridge.
 Then:
 
-        # virsh define vm_example_modified.xml
+        # virsh define virtualized_node_example_modified.xml
 
 Each VM has the following network cards:
 
